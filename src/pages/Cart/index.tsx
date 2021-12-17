@@ -1,9 +1,95 @@
 import React from 'react';
+import {
+  MdAddCircleOutline,
+  MdDelete,
+  MdRemoveCircleOutline,
+} from 'react-icons/md';
 
-// import { Container } from './styles';
+import { useCart } from '../../hooks/useCart';
+import { formatPrice } from '../../util/format';
+
+import { Container, ProductTable, Total } from './styles';
 
 const Cart: React.FC = () => {
-  return <h1>Cart</h1>;
+  const { cart, removeProduct, updateProductAmount } = useCart();
+
+  const cartFormatted = cart.map((product) => ({
+    ...product,
+    priceFormatted: formatPrice(product.price),
+    totalProduct: product.price * product.amount,
+  }));
+
+  const total = formatPrice(
+    cart.reduce((sumTotal, product) => {
+      return (sumTotal += product.price * product.amount);
+    }, 0)
+  );
+
+  return (
+    <Container>
+      <ProductTable>
+        <thead>
+          <tr>
+            <th aria-label="product image" />
+            <th>PRODUTO</th>
+            <th>QTD</th>
+            <th>SUBTOTAL</th>
+            <th aria-label="delete icon" />
+          </tr>
+        </thead>
+        <tbody>
+          {cartFormatted.map((product) => (
+            <tr data-testid="product" key={product.id}>
+              <td>
+                <img src={product.image} alt={product.name} />
+              </td>
+              <td>
+                <strong>{product.name}</strong>
+                <span>{product.priceFormatted}</span>
+              </td>
+              <td>
+                <div>
+                  <button
+                    type="button"
+                    data-testid="decrement-product"
+                    disabled={product.amount <= 1}
+                  >
+                    <MdRemoveCircleOutline size={20} />
+                  </button>
+                  <input
+                    type="text"
+                    data-testid="product-amount"
+                    readOnly
+                    value={product.amount}
+                  />
+                  <button type="button" data-testid="increment-product">
+                    <MdAddCircleOutline size={20} />
+                  </button>
+                </div>
+              </td>
+              <td>
+                <strong>{formatPrice(product.totalProduct)}</strong>
+              </td>
+              <td>
+                <button type="button" data-testid="remove-product">
+                  <MdDelete size={20} />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </ProductTable>
+
+      <footer>
+        <button type="button">Finalizar Pedido</button>
+
+        <Total>
+          <span>TOTAL</span>
+          <strong>{total}</strong>
+        </Total>
+      </footer>
+    </Container>
+  );
 };
 
 export default Cart;

@@ -39,6 +39,8 @@
         "import/no-duplicates": "off",
         "no-shadow": "off",
         "no-nested-ternary": "off",
+        "no-return-assign": "off",
+        "no-param-reassign": "off",
         "react/function-component-definition": "off",
         "@typescript-eslint/no-shadow": [
             "error"

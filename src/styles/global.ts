@@ -6,7 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 export default createGlobalStyle`
   :root {
     --white: #fff;
+    --white-50: #eee;
     --gray: #999;
+    --gray-500: #333;
     --black: rgb(8, 1, 42);
     --green: rgb(120, 217, 138);
   }
