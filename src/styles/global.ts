@@ -1,12 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 
 import background from '../assets/images/background.svg';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
   :root {
     --white: #fff;
     --gray: #999;
     --black: #191920;
+    --purple: #7159c1;
   }
 
   * {

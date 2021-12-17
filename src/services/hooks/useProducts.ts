@@ -2,16 +2,22 @@ import { useQuery } from 'react-query';
 
 import { api } from '../api';
 
-import { Product } from '../../util/interfaces';
+import { Product, Stock } from '../../types';
 import { formatPrice } from '../../util/format';
 
-export async function getProducts(): Promise<Product[]> {
+interface ProductFormatted extends Product {
+  priceFormatted: string;
+}
+
+export async function getProducts(): Promise<ProductFormatted[]> {
   const { data } = await api.get<Product[]>('product');
 
   const products = data.map((product) => ({
     ...product,
     priceFormatted: formatPrice(product.price),
   }));
+
+  console.log(products);
 
   return products;
 }

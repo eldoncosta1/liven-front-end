@@ -1,0 +1,72 @@
+{
+  "stock": [
+    {
+      "id": 1,
+      "amount": 3
+    },
+    {
+      "id": 2,
+      "amount": 5
+    },
+    {
+      "id": 3,
+      "amount": 2
+    },
+    {
+      "id": 4,
+      "amount": 1
+    },
+    {
+      "id": 5,
+      "amount": 5
+    },
+    {
+      "id": 6,
+      "amount": 10
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "name": "Tênis de Caminhada Leve Confortável",
+      "price": 179.9,
+      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
+      "stock": 3
+    },
+    {
+      "id": 2,
+      "name": "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
+      "price": 139.9,
+      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg",
+      "stock": 5
+    },
+    {
+      "id": 3,
+      "name": "Tênis Adidas Duramo Lite 2.0",
+      "price": 219.9,
+      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg",
+      "stock": 2
+    },
+    {
+      "id": 5,
+      "name": "Tênis VR Caminhada Confortável Detalhes Couro Masculino",
+      "price": 139.9,
+      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg",
+      "stock": 1
+    },
+    {
+      "id": 6,
+      "name": "Tênis Adidas Duramo Lite 2.0",
+      "price": 219.9,
+      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg",
+      "stock": 5
+    },
+    {
+      "id": 4,
+      "name": "Tênis de Caminhada Leve Confortável",
+      "price": 179.9,
+      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg",
+      "stock": 10
+    }
+  ]
+}
