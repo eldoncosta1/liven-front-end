@@ -2,19 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdShoppingBasket } from 'react-icons/md';
 
+import { useCart } from '../../hooks/useCart';
+
 import { Container, Cart } from './styles';
 
 const Header: React.FC = () => {
+  const { cart } = useCart();
+  const cartSize = cart.length;
+
   return (
     <Container>
-      <Link to="/">
-        <h1>LivenShoes</h1>
-      </Link>
+      <Link to="/">LivenShoes</Link>
 
       <Cart to="/cart">
         <div>
           <strong>Meu carrinho</strong>
-          <span data-testid="cart-size">1 item</span>
+          <span data-testid="cart-size">
+            {cartSize === 1 ? `${cartSize} item` : `${cartSize} items`}
+          </span>
         </div>
         <MdShoppingBasket size={36} color="#FFF" />
       </Cart>

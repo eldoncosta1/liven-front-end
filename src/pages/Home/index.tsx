@@ -7,9 +7,17 @@ import { useCart } from '../../hooks/useCart';
 
 import { Container, ProductList } from './styles';
 
+interface CartItemsAmount {
+  [key: string]: number;
+}
+
 const Home: React.FC = () => {
   const { data, isLoading, error } = useProducts();
   const { addProduct, cart } = useCart();
+
+  const cartItemsAmount = cart.reduce((sumAmount, product) => {
+    return Object.assign(sumAmount, { [product.id]: product.amount });
+  }, {} as CartItemsAmount);
 
   function handleAddProduct(id: string) {
     addProduct(id);
@@ -34,7 +42,8 @@ const Home: React.FC = () => {
                 onClick={() => handleAddProduct(product.id)}
               >
                 <div data-testid="cart-product-quantity">
-                  <MdAddShoppingCart size={16} color="#FFF" />0
+                  <MdAddShoppingCart size={16} />
+                  {cartItemsAmount[product.id] || 0}
                 </div>
                 <span>ADICIONAR AO CARRINHO</span>
               </button>

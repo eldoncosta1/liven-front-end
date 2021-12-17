@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { lighten } from 'polished';
 
 export const Container = styled.div`
   p {
@@ -36,8 +36,8 @@ export const ProductList = styled.ul`
     }
 
     button {
-      background: var(--purple);
-      color: var(--white);
+      background: var(--black);
+      color: var(--green);
       border: 0;
       border-radius: 4px;
       overflow: hidden;
@@ -48,7 +48,7 @@ export const ProductList = styled.ul`
       transition: background 0.2s;
 
       &:hover {
-        background: ${darken(0.06, '#7159c1')};
+        background: ${lighten(0.1, 'rgb(8, 1, 42)')};
       }
 
       div {

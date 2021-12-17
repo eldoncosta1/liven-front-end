@@ -8,6 +8,11 @@ export const Container = styled.header`
   margin: 50px 0;
 
   a {
+    color: var(--green);
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+
     transition: opacity 0.2s;
 
     &:hover {

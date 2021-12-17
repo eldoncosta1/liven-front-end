@@ -17,8 +17,6 @@ export async function getProducts(): Promise<ProductFormatted[]> {
     priceFormatted: formatPrice(product.price),
   }));
 
-  console.log(products);
-
   return products;
 }
 

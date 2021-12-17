@@ -19,3 +19,12 @@ Responsável por guardar os itens e quantidades adicionadas pelo usuário. É de
 ### Testes automatizados ✅
 
 - Criação de suite de testes automatizados para o repositório.
+
+### Json server
+Servidor local para validar aplicação.
+
+Para iniciá-lo rode o comando:
+
+`
+yarn server ou npm run server
+`
