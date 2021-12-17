@@ -8,7 +8,7 @@ Responsável por apresentar todos os produtos disponíveis para o usuário em um
 
 <aside>
 🛰️ Requisição HTTP para pegar a lista de produtos:
-GET [https://5d6da1df777f670014036125.mockapi.io/api/v1/product](https://5d6da1df777f670014036125.mockapi.io/api/v1/product)
+GET https://5d6da1df777f670014036125.mockapi.io/api/v1/product
 
 </aside>
 
