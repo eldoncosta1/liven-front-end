@@ -8,8 +8,9 @@ export default createGlobalStyle`
     --white: #fff;
     --white-50: #eee;
     --gray: #999;
+    --gray-100: #666;
     --gray-500: #333;
-    --black: rgb(8, 1, 42);
+    --blue: rgb(8, 1, 42);
     --green: rgb(120, 217, 138);
   }
 
@@ -21,7 +22,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: var(--black) url(${background}) no-repeat center top;
+    background: var(--blue) url(${background}) no-repeat center top;
     -webkit-font-smoothing: antialiased;
   }
 

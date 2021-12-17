@@ -13,7 +13,7 @@ export const Container = styled.div`
     align-items: center;
 
     button {
-      background: var(--black);
+      background: var(--blue);
       color: var(--green);
       border: 0;
       border-radius: 4px;
@@ -69,5 +69,44 @@ export const ProductTable = styled.table`
   span {
     display: block;
     margin-top: 5px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+
+    input {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      color: var(--gray-100);
+      padding: 6px;
+      width: 50px;
+    }
+  }
+
+  button {
+    background: none;
+    border: 0;
+    padding: 6px;
+
+    svg {
+      color: var(--blue);
+      transition: color 0.2;
+    }
+
+    &:hover {
+      svg {
+        color: ${lighten(0.3, 'rgb(8, 1, 42)')};
+      }
+    }
+
+    &:disabled {
+      svg {
+        color: ${lighten(0.25, 'rgb(8, 1, 42)')};
+        cursor: not-allowed;
+      }
+    }
   }
 `;

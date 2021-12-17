@@ -75,7 +75,7 @@ export function CartProvider({ children }: CartProviderProps) {
         (product) => product.id === productId
       );
 
-      if (productIndex > 0) {
+      if (productIndex >= 0) {
         updatedCart.splice(productIndex, 1);
         setCart(updatedCart);
         setItemCart(updatedCart);
