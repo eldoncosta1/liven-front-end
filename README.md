@@ -21,7 +21,7 @@ Responsável por guardar os itens e quantidades adicionadas pelo usuário. É de
 - Criação de suite de testes automatizados para o repositório.
 
 ### Json server
-Servidor local para validar aplicação.
+Servidor local para validar api de dados aplicação.
 
 Para iniciá-lo rode o comando:
 
