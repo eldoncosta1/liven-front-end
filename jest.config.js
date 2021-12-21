@@ -1,5 +1,5 @@
 module.exports = {
-  testPathsIgnorePatterns: ["/node_modules/"],
+  testPathIgnorePatterns: ["/node_modules/"],
   setupFilesAfterEnv: [
     "<rootDir>/src/setupTests.ts"
   ],
@@ -11,6 +11,9 @@ module.exports = {
   collectCoverageFrom: [
     "src/**/*.tsx",
     "!src/**/*.spec.tsx",
+  ],
+  coveragePathIgnorePatterns: [
+    "<rootDir>/src/temp/"
   ],
   coverageReporters: ["lcov", "json"]
 }
