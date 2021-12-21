@@ -114,7 +114,7 @@ export function CartProvider({ children }: CartProviderProps) {
         throw Error();
       }
     } catch {
-      toast.error('Erro na alteração da quantidade do produto');
+      toast.error('Erro na alteração de quantidade do produto');
     }
   };
 
