@@ -43,6 +43,10 @@ describe('useCart Hook', () => {
       .mockReturnValueOnce(JSON.stringify(initialStoragedData));
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should be able to initialize cart with localStorage value', () => {
     const { result } = renderHook(useCart, {
       wrapper: CartProvider,
@@ -234,8 +238,11 @@ describe('useCart Hook', () => {
           'Quantidade solicitada fora de estoque'
         );
       },
-      { timeout: 200 }
+      { timeout: 500 }
     );
+
+    // console.log(result.current.cart);
+    // console.log(initialStoragedData);
 
     expect(result.current.cart).toEqual(
       expect.arrayContaining(initialStoragedData)
@@ -272,6 +279,36 @@ describe('useCart Hook', () => {
     expect(mockedSetItemLocalStorage).toHaveBeenCalledWith(
       '@LivenShoes:cart',
       JSON.stringify(result.current.cart)
+    );
+  });
+
+  it('should not be able to update a product amount when running out of stock', async () => {
+    const productId = '2';
+
+    apiMock.onGet(`product/${productId}`).reply(200, {
+      id: '2',
+      stock: 1,
+      image:
+        'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg',
+      price: 139.9,
+      title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
+    });
+
+    const { result, waitFor } = renderHook(useCart, {
+      wrapper: CartProvider,
+    });
+
+    act(() => {
+      result.current.updateProductAmount({ productId, amount: 3 });
+    });
+
+    await waitFor(
+      () => {
+        expect(mockedToastError).toHaveBeenCalledWith(
+          'Quantidade solicitada fora de estoque'
+        );
+      },
+      { timeout: 200 }
     );
   });
 
@@ -371,53 +408,51 @@ describe('useCart Hook', () => {
     expect(mockedSetItemLocalStorage).not.toHaveBeenCalled();
   });
 
-  it('should not be able to update a product amount when running out of stock', async () => {
-    const productId = '2';
-
-    apiMock.onGet(`product/${productId}`).reply(200, {
-      id: '2',
-      stock: 1,
-      image:
-        'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg',
-      price: 139.9,
-      title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
-    });
+  it('should not be able to update a product that does not exist', async () => {
+    const productId = '4';
 
     const { result, waitFor } = renderHook(useCart, {
       wrapper: CartProvider,
     });
 
     act(() => {
-      result.current.updateProductAmount({ productId, amount: 3 });
+      result.current.updateProductAmount({ amount: 3, productId });
     });
 
     await waitFor(
       () => {
         expect(mockedToastError).toHaveBeenCalledWith(
-          'Quantidade solicitada fora de estoque'
+          'Erro na alteração de quantidade do produto'
         );
       },
       { timeout: 200 }
     );
+
+    expect(result.current.cart).toEqual(
+      expect.arrayContaining(initialStoragedData)
+    );
+
+    expect(mockedSetItemLocalStorage).not.toHaveBeenCalled();
   });
 
   it('should not be able to update a product amount to a value smaller than 1', async () => {
     const productId = '2';
 
-    apiMock.onGet(`product/${productId}`).reply(200, {
-      id: '2',
-      stock: 1,
-      image:
-        'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg',
-      price: 139.9,
-      title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
-    });
+    // apiMock.onGet(`product/${productId}`).reply(200, {
+    //   id: '2',
+    //   stock: 1,
+    //   image:
+    //     'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg',
+    //   price: 139.9,
+    //   title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
+    // });
 
     const { result, waitForValueToChange } = renderHook(useCart, {
       wrapper: CartProvider,
     });
 
     act(() => {
+      // console.log(result.current.cart);
       result.current.updateProductAmount({ productId, amount: 0 });
     });
 

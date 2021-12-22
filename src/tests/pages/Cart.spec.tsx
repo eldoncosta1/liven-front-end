@@ -38,6 +38,10 @@ describe('Cart Page', () => {
     });
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should be able to increase/decrease a product amount', () => {
     const { getAllByTestId, rerender } = render(<Cart />);
 
