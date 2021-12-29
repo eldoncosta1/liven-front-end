@@ -26,7 +26,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:local": "react-scripts build",
+    "build": "CI= react-scripts build",
     "test": "react-scripts test",
     "test:local": "jest --watchAll --coverage",
     "eject": "react-scripts eject",
